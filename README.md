@@ -36,7 +36,26 @@ Target dataset fields:
 
 ## Scraping Notes
 
-The scraper is designed to accept bank metadata from a config object or CLI arguments. If Google Play returns fewer than 400 reviews per bank, expand the date range and rerun the extraction.
+The scraper uses the following official Google Play package IDs:
+
+- Commercial Bank of Ethiopia: `com.combanketh.mobilebanking`
+- Bank of Abyssinia: `com.boa.boaMobileBanking`
+- Dashen Bank: `com.dashen.dashensuperapp`
+
+If Google Play returns fewer than 400 reviews per bank, expand the date range and rerun the extraction.
+
+## Task 1 Results
+
+Current validated scrape results:
+
+- Raw reviews collected: 1,200
+- Reviews per bank: CBE 400, BOA 400, Dashen 400
+- Clean reviews after preprocessing: 1,180
+- Duplicate rows removed: 20
+- Missing review text or rating rate in raw data: 0.0%
+- Date range covered: 2025-06-21 to 2026-05-17
+
+The final clean CSV contains only the required columns: `review`, `rating`, `date`, `bank`, and `source`.
 
 ## Data Quality Rules
 
@@ -70,3 +89,4 @@ python scripts/preprocess_reviews.py --input data/raw/playstore_reviews_raw.csv 
 - App IDs for the bank apps may need to be confirmed from Google Play before scraping.
 - Rate limits or unavailable review history may reduce the number of reviews collected.
 - The final report should document the exact date range and scrape counts used.
+- The final cleaned CSV should include only `review`, `rating`, `date`, `bank`, and `source`.

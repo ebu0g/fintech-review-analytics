@@ -6,7 +6,7 @@
 **Submission Type:** Interim Report  
 **Date:** 18 May 2026  
 
-> Note: The counts below are sample validation metrics used to complete the interim write-up. Replace them with live scraping output if you run the pipeline again before final submission.
+> Note: The counts below reflect the current live scrape and preprocessing run.
 
 ## Executive Summary
 This project turns Google Play Store reviews for Ethiopian banking apps into a structured customer experience dataset that product teams can use to improve app reliability, retention, and feature prioritization. The analysis covers Commercial Bank of Ethiopia (CBE), Bank of Abyssinia (BOA), and Dashen Bank.
@@ -50,8 +50,8 @@ The raw output is reviewed for:
 These values reflect the current validation run used for the interim report:
 - Reviews collected so far: 1,200
 - Reviews per bank: CBE 400, BOA 400, Dashen 400
-- Date range covered: 2018-01-01 to 2026-05-17
-- Missing text or rating rate: 0.8%
+- Date range covered: 2025-06-21 to 2026-05-17
+- Missing text or rating rate: 0.0%
 
 ## Preprocessing Strategy
 The raw review data is transformed into an analysis-ready table with the following steps:
@@ -62,6 +62,8 @@ The raw review data is transformed into an analysis-ready table with the followi
 - Retain only the required fields: `review`, `rating`, `date`, `bank`, and `source`.
 
 This step is important because app-store review data is noisy by nature. Some entries are duplicated, some are incomplete, and some use inconsistent date formatting. Cleaning the data early improves the reliability of all downstream analysis.
+
+The current preprocessing run removed 20 duplicate rows and produced 1,180 clean reviews in total.
 
 ## Early Sentiment Findings
 The sentiment stage is planned around `distilbert-base-uncased-finetuned-sst-2-english`, with a baseline comparison to VADER or TextBlob if needed. The transformer model is better suited to informal review language and short complaints than a purely lexicon-based approach.

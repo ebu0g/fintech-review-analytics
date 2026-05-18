@@ -34,6 +34,7 @@ def main() -> int:
 
     reviews_df.to_csv(output_path, index=False)
     print(f"Saved {len(reviews_df)} scraped reviews to {output_path}")
+    print(reviews_df.groupby("bank").size().to_string())
     return 0
 
 
