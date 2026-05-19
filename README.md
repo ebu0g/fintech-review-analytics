@@ -34,6 +34,32 @@ Target dataset fields:
 5. Standardize dates to `YYYY-MM-DD`.
 6. Save a clean CSV containing only the required columns.
 
+## Task 2 Methodology
+
+Task 2 extends the cleaned review data with sentiment labels and recurring themes.
+
+### Sentiment approach
+
+The analysis uses the DistilBERT SST-2 model as the primary classifier. The code converts the transformer output into a signed sentiment score and labels each review as positive, negative, or neutral. If the transformer stack is unavailable in the environment, the pipeline falls back to VADER so the workflow still runs end-to-end.
+
+### Thematic approach
+
+Thematic analysis uses keyword rules and TF-IDF n-grams to surface recurring complaint patterns and feature requests. The main theme buckets are:
+
+- Account Access Issues
+- Transaction Performance
+- UI & Navigation
+- Customer Support
+- Feature Requests
+- Stability & Errors
+
+### Output files
+
+- `data/raw/playstore_reviews_analyzed.csv`
+- `data/raw/sentiment_summary_by_bank.csv`
+- `data/raw/sentiment_summary_by_rating.csv`
+- `data/raw/top_theme_keywords.csv`
+
 ## Scraping Notes
 
 The scraper uses the following official Google Play package IDs:

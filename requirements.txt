@@ -4,3 +4,7 @@ pytest>=8.0.0
 google-play-scraper>=1.2.7
 sqlalchemy>=2.0.0
 psycopg2-binary>=2.9.0
+scikit-learn>=1.5.0
+transformers>=4.46.0
+vaderSentiment>=3.3.2
+nltk>=3.9.0
